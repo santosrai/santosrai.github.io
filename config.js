@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'https://gitsanto.github.io/',
+  url: 'https://santosrai.site/',
   pathPrefix: '/',
   title: 'Blog by Santosh Rai',
   subtitle: 'Santosh Rai Blog',
