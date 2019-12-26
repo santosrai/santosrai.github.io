@@ -1,6 +1,6 @@
 ---
 template: post
-title: Writing a simple calculator program with javascript using MVC pattern
+title: '--Writing a simple calculator program with javascript using MVC pattern'
 slug: Writing a simple calculator program with javascript
 draft: true
 date: 2019-12-26T00:42:14.379Z
