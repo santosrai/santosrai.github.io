@@ -1,7 +1,7 @@
 ---
 template: page
 title: About me
-slug: about
+slug: pages/about
 draft: false
 ---
 I am Santosh Rai. I live in Saitama City, Japan. I started my software developer job as VBA Developer. I also involved in RPA developer.
