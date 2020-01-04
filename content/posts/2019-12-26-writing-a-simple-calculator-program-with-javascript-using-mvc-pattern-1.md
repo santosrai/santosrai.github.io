@@ -25,7 +25,9 @@ Creating 3 files only
 
 ## What the heck is design pattern?
 
-In programming world, programmers talk about things like singletons, mvc instead of basic terms like int, arrays. I not big fan of this but you will see many different design pattern used in software applications.
+In programming world, programmers talk about things like singletons, mvc instead of basic terms like int, arrays. 
+
+I not big fan of this but you will see many different design pattern used in software applications.
 
 In definition [Design pattern   Wikipedia](https://en.wikipedia.org/wiki/Design_pattern)
 
@@ -43,4 +45,4 @@ MVC(Model View Controller) is one of the popular design pattern.
 
 # Conclusion
 
-Hope it helps you to understand MVC. Happy Coding :blush:
+Hope it helps you to understand MVC. Happy Coding
