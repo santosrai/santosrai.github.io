@@ -4,7 +4,7 @@ date: "2019-11-26 07:14:12"
 template: "post"
 draft: false
 slug: "/posts/ThunderbirdAddon/"
-category: "Programming Learning Note"
+category: "Thunderbird addon"
 tags:
   - "Thunderbirdaddon"
   - "JavaScript"

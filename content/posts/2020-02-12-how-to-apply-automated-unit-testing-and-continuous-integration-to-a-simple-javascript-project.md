@@ -6,12 +6,12 @@ title: >-
 slug: >-
   posts/How to apply automated unit testing and continuous integration to a
   simple JavaScript project
-draft: true
+draft: false
 date: 2020-02-12T07:16:48.386Z
 description: >-
   How to apply automated unit testing and continuous integration to a simple
   JavaScript project.
-category: Javascript
+category: CI/CD
 tags:
   - GithubActions
   - ''

@@ -5,7 +5,7 @@ slug: posts/simple calculator in javascript using MVC pattern
 draft: false
 date: 2019-12-26T01:31:00.000Z
 description: Simple calculator in javascript using MVC pattern
-category: simple calculator in javascript using MVC pattern
+category: MVC Pattern
 tags:
   - JavaScript
   - MVC
