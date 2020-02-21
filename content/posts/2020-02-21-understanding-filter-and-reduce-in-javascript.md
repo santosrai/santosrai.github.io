@@ -2,7 +2,7 @@
 template: post
 title: Understanding Filter and Reduce in JavaScript
 slug: posts/Understanding Filter and Reduce in JavaScript
-draft: true
+draft: false
 date: 2020-02-21T02:01:21.852Z
 description: Understanding Filter and Reduce in JavaScript
 category: JavaScript
