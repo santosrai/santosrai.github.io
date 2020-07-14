@@ -18,6 +18,10 @@ module.exports = {
     {
       label: 'About me',
       path: '/pages/about'
+    },
+    {
+      label: 'Newsletter',
+      path: 'https://santoshrai.substack.com/subscribe'
     }
   ],
   author: {
@@ -26,11 +30,11 @@ module.exports = {
     bio: 'Web Developer | VBA Developer | RPA Developer',
     contacts: {
       email: 'me.santosrai@gmail.com',
-      // telegram: '#',
+      telegram: '#',
       twitter: '54ntosh',
       github: 'gitsanto',
-      // rss: '#',
-      // vkontakte: '#'
+      rss: '#',
+      vkontakte: '#'
     }
   }
 };
