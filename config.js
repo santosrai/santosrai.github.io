@@ -3,7 +3,7 @@
 module.exports = {
   url: 'https://santosrai.site/',
   pathPrefix: '/',
-  title: 'Blog by Santosh Rai',
+  title: 'Programming Blog by Santosh Rai',
   subtitle: 'Santosh Rai Blog',
   copyright: '© All rights reserved.',
   disqusShortname: '',
@@ -17,7 +17,7 @@ module.exports = {
     },
     {
       label: 'Projects',
-      path: '/pages/my-projects'
+      path: '/pages/projects'
     },
     {
       label: 'About me',
