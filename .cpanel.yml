@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/lugakoco/santosrai/
+    - export DEPLOYPATH=/home/lugakoco/santosrai.site/
     - /bin/cp -R * $DEPLOYPATH
