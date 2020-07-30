@@ -1,7 +1,7 @@
 {
   "version": "3.0.3",
   "name": "santos-profile",
-  "homepage": "https://github.com/Gitsanto/Gitsanto",
+  "homepage": "https://github.com/Gitsanto/Gitsanto.github.io",
   "description": "My personal website",
   "main": "n/a",
   "scripts": {
@@ -17,7 +17,7 @@
     "test:coverage": "jest --coverage --config ./jest/jest-config.js",
     "test:watch": "jest --watch --config ./jest/jest-config.js"
   },
-  "repository": "https://github.com/Gitsanto/Gitsanto",
+  "repository": "https://github.com/Gitsanto/Gitsanto.github.io",
   "author": "Santosh Rai <me.santosrai@gmail.com>",
   "license": "MIT",
   "keywords": [
