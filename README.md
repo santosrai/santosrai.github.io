@@ -1,1 +1,1 @@
-This is my personal website used Lumen -Gatsby
+This is my personal website used Lumen -Gatsby.
