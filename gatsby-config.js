@@ -1,7 +1,12 @@
 'use strict';
-
+// require("dotenv").config({
+//   path: `.env.production`
+// });
+require("dotenv").config();
 const siteConfig = require('./config.js');
 const postCssPlugins = require('./postcss-config.js');
+
+
 
 module.exports = {
   pathPrefix: siteConfig.pathPrefix,
@@ -15,6 +20,14 @@ module.exports = {
     author: siteConfig.author
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries: require("./src/utils/algolia-queries")
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -130,6 +143,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-netlify',
+    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
