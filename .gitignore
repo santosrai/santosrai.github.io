@@ -5,4 +5,5 @@ npm-debug.log
 .gatsby-context.js
 .idea
 .env
+public/
 gatsby-starter-lumen.iml
