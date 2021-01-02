@@ -36,7 +36,7 @@ module.exports = {
       email: 'me.santosrai@gmail.com',
       telegram: '#',
       twitter: '54ntosh',
-      github: 'gitsanto',
+      github: 'santosrai',
       rss: '#',
       vkontakte: '#'
     }
