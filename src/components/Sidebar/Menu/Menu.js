@@ -15,6 +15,8 @@ const Menu = ({ menu }: Props) => (
     <ul className={styles['menu__list']}>
       {menu.map((item) => (
         <li className={styles['menu__list-item']} key={item.path}>
+          {/* Using Outsource link cause 404 issues */}
+          {/* so <a> is used on Newsletter */}
           {item.label === 'Newsletter'
             ? <a
               className={styles['menu__list-item-link']}
