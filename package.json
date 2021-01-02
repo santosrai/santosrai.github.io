@@ -23,8 +23,6 @@
   "keywords": [
     "gatsby",
     "graphql",
-    "netlify",
-    "netlify-cms",
     "pagination",
     "categories",
     "tags",
@@ -79,7 +77,6 @@
     "katex": "^0.10.2",
     "lodash": "^4.17.20",
     "moment": "^2.24.0",
-    "netlify-cms-app": "^2.11.16",
     "node-sass": "^4.13.1",
     "normalize-scss": "^7.0.1",
     "prismjs": "^1.19.0",
