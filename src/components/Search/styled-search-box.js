@@ -9,6 +9,7 @@ const open = css`
   padding-left: 1.6em;
 `
 
+
 const closed = css`
   width: 0;
   background: transparent;
