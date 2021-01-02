@@ -25,6 +25,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i
+      env:
+        GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
+        GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
+        ALGOLIA_ADMIN_KEY : ${{ secrets.ALGOLIA_ADMIN_KEY }}
+
     - run: npm run build --if-present
     - run: npm test
     - name: Deploy to gh-pages
