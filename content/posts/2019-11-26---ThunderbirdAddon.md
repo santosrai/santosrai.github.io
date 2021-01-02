@@ -32,7 +32,7 @@ Create Example add-on ID
 
 There will be extension folder inside your newly created profile.Go to your extension folder and create folder name "my-addon@my.example.com" inside the extension folder.
 
-```cmd
+```
 {Profile_Dir}
 |--extensions
   |--my-addon@my.example.com
@@ -83,7 +83,7 @@ UI File : my.xul
 
 Folder Structure
 
-```cmd
+```
 {my-addon@my.example.com}
     - index.rdf
     - chrome.manifest
@@ -95,7 +95,7 @@ Folder Structure
 1.chrome.manifest file
 It tells Thunderbird what packages and overlays are provided by the extension
 
-```manifest
+```
 content my-addon chrome/content/
 overlay chrome://messenger/content/messenger.xul chrome://my-addon/content/my.xul
 ```
@@ -163,4 +163,4 @@ function MyCommand( me ) {
 
 **Check Out Github**
 
-Github Url [links](https://github.com/Gitsanto/CommonVBA.Utility/)
+Github Url [links](https://github.com/santosrai/thunderbird-addons/)
