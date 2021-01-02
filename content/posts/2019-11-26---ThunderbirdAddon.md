@@ -159,8 +159,3 @@ function MyCommand( me ) {
     consoleService.logStringMessage( 'You have clicked it' );
 }
 ```
-
-
-**Check Out Github**
-
-Github Url [links](https://github.com/santosrai/thunderbird-addons/)
