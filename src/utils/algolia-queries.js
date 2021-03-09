@@ -1,7 +1,7 @@
 const escapeStringRegexp = require("escape-string-regexp")
 
-const pagePath = `content`
-const indexName = `GatsbyBlog`
+const pagePath = `content`;
+const indexName = `GatsbyBlog`;
 
 const pageQuery = `{
   pages: allMarkdownRemark(
@@ -42,4 +42,4 @@ const queries = [
   },
 ]
 
-module.exports = queries
+module.exports = queries;

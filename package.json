@@ -43,6 +43,7 @@
     "bluebird": "^3.7.2",
     "classnames": "^2.2.6",
     "codecov": "^3.6.5",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.29.3",
     "gatsby-cli": "^2.12.67",
     "gatsby-link": "^2.2.29",
