@@ -1,21 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Completely disable SWC
+  // Basic configuration for WebContainer environment
+  images: {
+    domains: ['localhost'],
+  },
+  // Disable SWC minification
   swcMinify: false,
-  experimental: {
-    forceSwcTransforms: false,
-    swcTraceProfiling: false,
-  },
-  // Use Terser for minification instead of SWC
-  webpack: (config, { dev, isServer }) => {
-    // Disable SWC loader
-    if (!dev && !isServer) {
-      config.optimization.minimizer = config.optimization.minimizer.filter(
-        (minimizer) => minimizer.constructor.name !== 'SwcMinifyPlugin'
-      );
-    }
-    return config;
-  },
+  // Output configuration for static export if needed
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  }
 };
 
 export default nextConfig;
