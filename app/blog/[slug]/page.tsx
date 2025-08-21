@@ -1,82 +1,73 @@
-import getAllPosts from "@/lib/getAllPosts"
-import getPostBySlug from "@/lib/getPostBySlug"
-import { formatDate } from "@/lib/helper"
-import { Metadata } from "next"
+import { getPostBySlug, getAllPosts } from "@/lib/mdx"
 import { notFound } from "next/navigation"
+import { Metadata } from "next/types"
+import config from "@/lib/config"
+import { formatDate } from "@/lib/helper"
 
 export const dynamic = 'force-static'
-/**
- * Generate the static routes at build time.
- *
- * @see https://nextjs.org/docs/app/api-reference/functions/generate-static-params
- */
+
 export async function generateStaticParams() {
-    // Get all blog posts.
-    const posts = await getAllPosts()
-  
-    // No posts? Bail...
-    if (!posts) {
-      return []
-    }
-  
-    // Return the slugs for each post.
-    return posts.map((post: {slug: string}) => ({
-      slug: post.slug
-    }))
+  const posts = await getAllPosts()
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata | null> {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
+
+  if (!post) {
+    return null
   }
-  
-  /**
-   * Generate the metadata for each static route at build time.
-   *
-   * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
-   */
-  export async function generateMetadata({
-    params
-  }: {
-    params: {slug: string}
-  }): Promise<Metadata | null> {
-    // Get the blog post.
-    const post = await getPostBySlug(params.slug)
-  
-    // No post? Bail...
-    if (!post) {
-      return {}
-    }
-  
-    return {
+
+  return {
+    title: `${post.title} - ${config.siteName}`,
+    description: post.excerpt,
+    alternates: {
+      canonical: `${config.siteUrl}/blog/${post.slug}`,
+    },
+    openGraph: {
       title: post.title,
-      description: post.excerpt
-    }
+      description: post.excerpt,
+      url: `${config.siteUrl}/blog/${post.slug}`,
+    },
   }
-  
+}
 
-  /**
- * The blog post route.
- *
- * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages
- */
-export default async function Post({params}: {params: {slug: string}}) {
-    // Fetch a single post from WordPress.
-    const post = await getPostBySlug(params.slug)
-  
-    // No post? Bail...
-    if (!post) {
-      notFound()
-    }
-  
-    return (
-      <article>
-        <header>
-          <h1 className=" text-white font-bold" dangerouslySetInnerHTML={{__html: post.title}} />
-          <p className="italic">
-            By {post.author.node.name} on <time>{formatDate(post.date)}</time>
-          </p>
-        </header>
-        <div dangerouslySetInnerHTML={{__html: post.content}} />
-        <footer className="flex items-center justify-between gap-4 pb-4">
-         
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
 
-        </footer>
-      </article>
-    )
+  if (!post) {
+    notFound()
   }
+
+  return (
+    <article className="max-w-4xl mx-auto px-4 py-8">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold text-white mb-4">{post.title}</h1>
+        <div className="flex items-center gap-4 text-gray-400">
+          <span>By {post.author.node.name}</span>
+          <span>•</span>
+          <time dateTime={post.date}>{formatDate(post.date)}</time>
+        </div>
+        {post.excerpt && (
+          <p className="text-lg text-gray-300 mt-4">{post.excerpt}</p>
+        )}
+      </header>
+
+      <div className="prose prose-invert prose-lg max-w-none">
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </div>
+    </article>
+  )
+}

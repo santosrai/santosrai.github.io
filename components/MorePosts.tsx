@@ -1,51 +1,44 @@
 'use client'
 
-import getPosts from  '@/lib/getPostByNumber'
-import type {AllPosts} from '@/lib/types'
-import {useState} from 'react'
+import type { Post } from '@/lib/types'
+import { useState } from 'react'
 import PostList from '@/components/PostList'
+
 /**
  * The more posts component.
  */
-export default function MorePosts({endCursor}: Readonly<{endCursor: string}>) {
-  const [posts, setPosts] = useState<AllPosts>({
-    edges: [],
-    pageInfo: {endCursor: ''}
-  })
+export default function MorePosts({ 
+  endCursor, 
+  initialPosts = [] 
+}: Readonly<{ 
+  endCursor: string
+  initialPosts?: Post[]
+}>) {
+  const [posts, setPosts] = useState<Post[]>(initialPosts)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hasMorePosts, setHasMorePosts] = useState(true)
 
-  // Fetch handler.
+  // Fetch handler - this would typically call an API endpoint
   async function fetchPosts() {
-    // Set the cursor.
-    const cursor = posts.pageInfo.endCursor || endCursor
-
-    // Fetch posts from WordPress.
-    const paginatedPosts = await getPosts(15, cursor)
-
-    // No posts? Bail.
-    if (!paginatedPosts) {
-      return
-    }
-
-    // Merge the previous posts with the new posts.
-    setPosts({
-      edges: [...posts.edges, ...paginatedPosts.edges],
-      pageInfo: paginatedPosts.pageInfo
-    })
+    // For now, we'll simulate loading more posts
+    // In a real implementation, you'd call an API endpoint
+    setHasMorePosts(false)
   }
-
-  let hasMorePosts = posts.pageInfo.hasNextPage
 
   return (
     <>
-      {posts.edges.length > 0 && (
+      {posts.length > 0 && (
         <div className="my-8">
           <PostList posts={posts} />
         </div>
       )}
       {hasMorePosts && (
-      <button className="mx-auto my-10 flex" onClick={fetchPosts}>
-        Load More
-      </button>
+        <button 
+          className="mx-auto my-10 flex bg-teal-400 hover:bg-teal-500 text-white px-6 py-3 rounded-md transition-colors" 
+          onClick={fetchPosts}
+        >
+          Load More
+        </button>
       )}
     </>
   )

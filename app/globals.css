@@ -6,7 +6,11 @@
 
 @layer base {
     body {
-      @apply relative mx-auto space-y-8 px-4 py-8 antialiased;
+    margin: 0;
+      
+    }
+    .main-screen {
+      @apply relative mx-auto space-y-8 px-4 py-8 antialiased max-w-6xl;
       @apply prose prose-zinc dark:prose-invert;
       @apply dark:bg-zinc-900;
     }

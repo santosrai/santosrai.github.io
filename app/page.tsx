@@ -1,37 +1,24 @@
 
-import { getAllPosts } from "../lib/api";
+import { getAllPosts } from "../lib/mdx";
 import { notFound } from "next/navigation";
 import { Post } from "@/lib/types";
 import Link from "next/link";
-import { getPageBySlug } from "@/lib/getPageBySlug";
 import { formatDate } from "@/lib/helper";
-
 
 export const dynamic = 'force-static'
 export default async function Home() {
-  // Fetch homepage from WordPress.
-  const homepage = await getPageBySlug('homepage')
   const posts = await getAllPosts()
 
-  if (!posts || !posts.length || !homepage) {
+  if (!posts || !posts.length) {
     notFound()
   }
 
-
   return (
-
-
-    <main className="flex flex-col ">
-      {/* <article>
-        <h1 dangerouslySetInnerHTML={{__html: homepage.title}} />
-        <div dangerouslySetInnerHTML={{__html: homepage.content}} />
-      </article> */}
+    <main className="w-full flex flex-col ">
       <div>
-        <h2 className="text-3xl text-white font-bold"> Welcome to my digital garden. </h2>
+        <h1 className="text-3xl text-white font-bold"> Welcome to my digital garden. </h1>
         <p>I love indoor gardening beside programming.</p>
-
       </div>
-
 
       <div className="flex justify-between items-center py-4 px-6">
         <h2 className="text-3xl text-white font-bold">Latest Posts</h2>
@@ -41,7 +28,7 @@ export default async function Home() {
       </div>
 
       <div className="flex flex-col">
-        {posts.map((post: Post) => (
+        {posts.slice(0, 4).map((post: Post) => (
           <div key={post.databaseId} className="flex justify-between items-center  hover:bg-[#555]">
             <Link className="no-underline" href={`/blog/${post.slug}`}>
               <h3 className="text-xl text-white font-medium ">{post.title}</h3>
@@ -50,7 +37,6 @@ export default async function Home() {
           </div>
         ))}
       </div>
-
     </main>
   );
 }
