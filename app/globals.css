@@ -6,12 +6,39 @@
 
 @layer base {
     body {
-    margin: 0;
-      
+      margin: 0;
+      @apply bg-white dark:bg-zinc-900 transition-colors duration-200;
     }
     .main-screen {
-      @apply relative mx-auto space-y-8 px-4 py-8 antialiased max-w-6xl;
-      @apply prose prose-zinc dark:prose-invert;
-      @apply dark:bg-zinc-900;
+      @apply relative mx-auto space-y-8 px-4 sm:px-6 lg:px-8 pt-4 pb-8 antialiased max-w-4xl;
+      @apply bg-white dark:bg-zinc-900 transition-colors duration-200;
     }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Smooth transitions for theme switching */
+@layer base {
+  * {
+    @apply transition-colors duration-200 ease-in-out;
+  }
+  
+  /* Override transitions for specific elements that need faster/different timing */
+  button, a {
+    @apply transition-all duration-200 ease-in-out;
+  }
 }

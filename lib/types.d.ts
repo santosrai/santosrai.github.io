@@ -74,3 +74,27 @@ export interface FeaturedImage {
     }
   }
 }
+
+export interface Project {
+  slug: string
+  title: string
+  description: string
+  content: string
+  repository?: string
+  demo?: string
+  technologies: string[]
+  status: 'completed' | 'in-progress' | 'archived'
+  featured: boolean
+  date: string
+  modified: string
+  screenshot?: string
+  databaseId: string
+  author: {
+    node: {
+      name: string
+      avatar: {
+        url: string
+      }
+    }
+  }
+}

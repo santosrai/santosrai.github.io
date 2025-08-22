@@ -33,12 +33,17 @@ export default function MorePosts({
         </div>
       )}
       {hasMorePosts && (
-        <button 
-          className="mx-auto my-10 flex bg-teal-400 hover:bg-teal-500 text-white px-6 py-3 rounded-md transition-colors" 
-          onClick={fetchPosts}
-        >
-          Load More
-        </button>
+        <div className="flex justify-center mt-8">
+          <button 
+            className="inline-flex items-center gap-2 border border-teal-500 text-slate-900 dark:text-white bg-teal-100 dark:bg-teal-600/20 hover:bg-teal-600 hover:text-white py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105" 
+            onClick={fetchPosts}
+          >
+            Load More Posts
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
       )}
     </>
   )

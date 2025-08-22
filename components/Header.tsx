@@ -3,6 +3,7 @@ import { use, useState } from 'react';
 import Link from "next/link";
 import Image from 'next/image'
 import config from "@/lib/config";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,66 +52,81 @@ export default function Header() {
   }
 
   return (
-    <header className="w-full bg-green-800">
-    <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
-      {/* Left side - Profile */}
-      <div className="flex items-center gap-2 md:gap-4">
-        <Image
-          alt="Santosh Rai"
-          className="h-16 w-16 md:h-24 md:w-24 rounded-full shadow-lg"
-          height={96}
-          src={config.profileLogo}
-          width={96}
-        />
-        <div className="flex flex-col">
-          <h1 className="text-lg md:text-2xl mb-0">{config.siteName}</h1>
-          <p className="text-sm md:text-base">{config.intro}</p>
+    <header className="sticky top-0 z-50 w-full bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm shadow-lg border-b border-slate-200 dark:border-zinc-700 transition-colors duration-200">
+      <div className="max-w-4xl mx-auto flex justify-between items-center p-4 md:p-6">
+        {/* Left side - Profile */}
+        <div className="flex items-center gap-3 md:gap-4">
+          <div className="relative">
+            <Image
+              alt="Santosh Rai"
+              className="h-12 w-12 md:h-16 md:w-16 rounded-full shadow-lg ring-2 ring-teal-400/30"
+              height={64}
+              src={config.profileLogo}
+              width={64}
+            />
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-teal-500 rounded-full border-2 border-white dark:border-zinc-800"></div>
+          </div>
+          <div className="flex flex-col space-y-1 min-w-0">
+            <h1 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-0 truncate">{config.siteName}</h1>
+            <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 truncate">{config.intro}</p>
+          </div>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-zinc-700/50 transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg className="w-6 h-6 text-slate-900 dark:text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+            {isMenuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-2">
+          <nav className="flex items-center gap-1 lg:gap-2">
+            {!!menu && menu.menuItems.edges.map((item) => (
+              <Link
+                key={item.node.databaseId}
+                href={item.node.uri}
+                className="px-3 py-2 rounded-lg text-slate-900 dark:text-white bg-slate-100 dark:bg-transparent border border-slate-300 dark:border-zinc-600 hover:bg-teal-600 hover:border-teal-500 hover:text-white hover:scale-105 transition-all duration-200 font-medium text-sm"
+              >
+                {item.node.label}
+              </Link>
+            ))}
+          </nav>
+          <ThemeToggle />
         </div>
       </div>
 
-      {/* Mobile Menu Button */}
-      <button 
-        className="md:hidden p-2"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        <svg className="w-6 h-6 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-          {isMenuOpen ? (
-            <path d="M6 18L18 6M6 6l12 12" />
-          ) : (
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          )}
-        </svg>
-      </button>
-
-      {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-2">
-        {!!menu && menu.menuItems.edges.map((item) => (
-          <Link
-            key={item.node.databaseId}
-            href={item.node.uri}
-            className="px-4 py-2 rounded-md text-white border border-teal-400 hover:bg-teal-400 transition-colors"
-          >
-            {item.node.label}
-          </Link>
-        ))}
-      </nav>
-    </div>
-
-    {/* Mobile Navigation */}
-    {isMenuOpen && (
-      <nav className="md:hidden bg-green-900 p-4">
-        {!!menu && menu.menuItems.edges.map((item) => (
-          <Link
-            key={item.node.databaseId}
-            href={item.node.uri}
-            className="block py-2 text-white hover:text-teal-400"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {item.node.label}
-          </Link>
-        ))}
-      </nav>
-    )}
-  </header>
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <nav className="md:hidden bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm border-t border-slate-200 dark:border-zinc-700">
+          <div className="p-6 space-y-2">
+            {!!menu && menu.menuItems.edges.map((item) => (
+              <Link
+                key={item.node.databaseId}
+                href={item.node.uri}
+                className="block py-3 px-4 text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-300 hover:bg-slate-100 dark:hover:bg-zinc-700/50 rounded-lg transition-all duration-200 font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.node.label}
+              </Link>
+            ))}
+            <div className="pt-4 border-t border-slate-200 dark:border-zinc-700 mt-4">
+              <div className="flex items-center justify-between">
+                <span className="text-slate-900 dark:text-white text-sm font-medium">Theme</span>
+                <ThemeToggle />
+              </div>
+            </div>
+          </div>
+        </nav>
+      )}
+    </header>
   );
 }

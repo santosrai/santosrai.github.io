@@ -1,7 +1,7 @@
 import type { Post } from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { formatDate } from '@/lib/helper'
+import { formatDate, calculateReadTime } from '@/lib/helper'
 
 function truncateCharacters(str: string, maxChars: number) {
   return str.length > maxChars ? str.substring(0, maxChars) + "..." : str;
@@ -12,9 +12,9 @@ function truncateCharacters(str: string, maxChars: number) {
  */
 export default function PostList({ posts }: Readonly<{ posts: Post[] }>) {
   return (
-    <div className="grid gap-8 md:grid-cols-2">
+    <div className="grid gap-4 md:gap-6">
       {posts.map((post) => (
-        <article className="not-prose bg-gray-800 p-6 rounded-lg" key={post.databaseId}>
+        <article className="group bg-white dark:bg-zinc-800/30 border border-slate-200 dark:border-zinc-700 rounded-lg p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-zinc-800/50 hover:border-teal-500/50 transition-all duration-200 shadow-sm hover:shadow-md" key={post.databaseId}>
           {post.featuredImage?.node?.sourceUrl && (
             <Link href={`/blog/${post.slug}`}>
               <Image
@@ -28,32 +28,32 @@ export default function PostList({ posts }: Readonly<{ posts: Post[] }>) {
             </Link>
           )}
           
-          <Link
-            className="no-underline hover:underline"
-            href={`/blog/${post.slug}`}
-          >
-            <h2 className="mt-1 text-xl font-bold leading-tight text-white">
-              {post.title}
-            </h2>
-          </Link>
-          
-          <div className="flex items-center gap-4 text-sm text-gray-400 mt-2">
-            <span>By {post.author.node.name}</span>
-            <span>•</span>
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
-          </div>
-          
-          {post.excerpt && (
-            <p className="text-gray-300 mt-3">
-              {truncateCharacters(post.excerpt, 150)}
-            </p>
-          )}
-          
-          <Link 
-            className="button inline-block mt-4 bg-teal-400 hover:bg-teal-500 text-white px-4 py-2 rounded-md transition-colors" 
-            href={`/blog/${post.slug}`}
-          >
-            View Post
+          <Link className="no-underline block" href={`/blog/${post.slug}`}>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+              <div className="flex-1 space-y-2">
+                <h2 className="text-lg md:text-xl text-slate-900 dark:text-white font-semibold group-hover:text-teal-600 dark:group-hover:text-teal-300 transition-colors">
+                  {post.title}
+                </h2>
+                {post.excerpt && (
+                  <p className="text-slate-500 dark:text-gray-400 text-sm line-clamp-2 leading-relaxed">
+                    {truncateCharacters(post.excerpt, 150)}
+                  </p>
+                )}
+              </div>
+              <div className="flex flex-row sm:flex-col items-start sm:items-end justify-between sm:justify-start sm:space-y-1">
+                <time className="text-sm text-slate-500 dark:text-gray-400 whitespace-nowrap" dateTime={post.date}>
+                  {formatDate(post.date)}
+                </time>
+                <span className="text-xs text-teal-600 dark:text-teal-400 whitespace-nowrap">
+                  {calculateReadTime(post.content)}
+                </span>
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity text-teal-600 dark:text-teal-400 hidden sm:block">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </Link>
         </article>
       ))}

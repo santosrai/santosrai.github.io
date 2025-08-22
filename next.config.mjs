@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Basic configuration for WebContainer environment
-  images: {
-    domains: ['localhost'],
-  },
-  // Disable SWC minification
-  swcMinify: false,
-  // Output configuration for static export if needed
+  // Output configuration for static export
   output: 'export',
   trailingSlash: true,
   images: {

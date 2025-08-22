@@ -37,15 +37,15 @@ export default async function BlogArchive() {
   const posts = await getPostsByNumber(12)
 
   // No posts? Throw a 404.
-  if (!posts) {
+  if (!posts || !posts.nodes || posts.nodes.length === 0) {
     notFound()
   }
 
   return (
-    <>
-      <h1>Latest Posts</h1>
+    <div className="w-full max-w-none">
+      <h1 className="text-3xl md:text-4xl text-slate-900 dark:text-white font-bold mb-8">Latest Posts</h1>
       <PostList posts={posts.nodes} />
       <MorePosts endCursor={posts.pageInfo.endCursor} />
-    </>
+    </div>
   )
 }
