@@ -54,8 +54,8 @@ export default async function BlogPost({
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <header className="mb-8">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">{post.title}</h1>
-        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base text-gray-400">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">{post.title}</h1>
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base text-slate-600 dark:text-gray-400">
           <span>By {post.author.node.name}</span>
           <span className="hidden sm:inline">•</span>
           <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -63,11 +63,11 @@ export default async function BlogPost({
           <span className="text-teal-400">{calculateReadTime(post.content)}</span>
         </div>
         {post.excerpt && (
-          <p className="text-lg text-gray-300 mt-4">{post.excerpt}</p>
+          <p className="text-lg text-slate-600 dark:text-gray-300 mt-4">{post.excerpt}</p>
         )}
       </header>
 
-      <div className="prose prose-invert prose-lg max-w-none">
+      <div className="prose prose-lg max-w-none dark:prose-invert">
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
     </article>
