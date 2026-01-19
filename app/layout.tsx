@@ -1,5 +1,6 @@
 import type {Metadata, Viewport} from 'next'
 import { Fraunces, Spectral } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import config from '@/lib/config'
 import './globals.css'
 import Header from '@/components/Header'
@@ -59,6 +60,7 @@ export default function RootLayout({
           </div>
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   )
