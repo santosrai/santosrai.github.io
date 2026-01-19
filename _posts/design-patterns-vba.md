@@ -5,8 +5,6 @@ date: '2023-12-25'
 author: 'Santosh Rai'
 ---
 
-# Design Patterns With VBA
-
 In the world of programming, design patterns are reusable solutions to common problems that developers often encounter when designing software applications. While VBA (Visual Basic for Applications) is not a full-fledged object-oriented language, it does support several object-oriented principles, allowing developers to implement design patterns to some extent. In this blog post, we'll explore three design patterns that can be applied in VBA: **Abstraction**, **Encapsulation**, and **Polymorphism**.
 
 ## 1. Abstraction

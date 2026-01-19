@@ -5,8 +5,6 @@ date: '2024-01-05'
 author: 'Santosh Rai'
 ---
 
-# What is double not !! operator in JavaScript
-
 ## Introduction
 
 As I was reading some JavaScript open-source projects, I found a double not-in-if statement of the JavaScript file which felt weird to me like this.

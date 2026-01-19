@@ -5,8 +5,6 @@ date: '2024-01-10'
 author: 'Santosh Rai'
 ---
 
-# How to apply automated unit testing and continuous integration to a simple JavaScript project?
-
 ## What is automated testing?
 
 Automated Testing is testing where tests are run without human intervention.

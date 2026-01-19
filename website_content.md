@@ -42,7 +42,7 @@ Design Patterns With VBA In the world of programming, design patterns are reusab
 
 # About
 
-Full Stack Engineer | RPA Engineer
+Software Engineer | Full-Stack • RPA • AI
 
 Under Construction
 

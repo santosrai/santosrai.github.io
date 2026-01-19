@@ -8,10 +8,16 @@
     body {
       margin: 0;
       @apply bg-white dark:bg-zinc-900 transition-colors duration-200;
+      font-family: var(--font-spectral), serif;
     }
     .main-screen {
       @apply relative mx-auto space-y-8 px-4 sm:px-6 lg:px-8 pt-4 pb-8 antialiased max-w-4xl;
       @apply bg-white dark:bg-zinc-900 transition-colors duration-200;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-fraunces), serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 }
 

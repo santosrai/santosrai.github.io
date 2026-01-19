@@ -1,9 +1,24 @@
 import type {Metadata, Viewport} from 'next'
+import { Fraunces, Spectral } from 'next/font/google'
 import config from '@/lib/config'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Providers } from '@/components/ThemeProvider'
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  weight: ['400', '600', '700', '900'],
+  display: 'swap',
+})
+
+const spectral = Spectral({
+  subsets: ['latin'],
+  variable: '--font-spectral',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
 
 
 
@@ -35,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${spectral.variable}`}>
        <body>
         <Providers>
           <Header />

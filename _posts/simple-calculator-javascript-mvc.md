@@ -5,8 +5,6 @@ date: '2024-01-15'
 author: 'Santosh Rai'
 ---
 
-# Simple calculator in javascript using MVC pattern
-
 ## What do I want to do?
 
 I want to write a simple calculator app with plain JavaScript using a Model-View-Controller design pattern.

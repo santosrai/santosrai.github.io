@@ -9,7 +9,7 @@ export default function About() {
                     About Me
                 </h1>
                 <p className="text-xl text-slate-600 dark:text-gray-300">
-                    Full Stack Engineer | RPA Engineer
+                    Software Engineer | Full-Stack • RPA • AI
                 </p>
             </div>
 

@@ -31,7 +31,7 @@ function getStatusLabel(status: string) {
 
 export default function ProjectCard({ project }: Readonly<{ project: Project }>) {
   return (
-    <article className="group bg-white dark:bg-zinc-800/30 border border-slate-200 dark:border-zinc-700 rounded-xl overflow-hidden hover:bg-slate-50 dark:hover:bg-zinc-800/50 hover:border-teal-500/50 transition-all duration-300 hover:scale-[1.02] shadow-sm hover:shadow-md">
+    <article className="group flex flex-col bg-white dark:bg-zinc-800/30 border border-slate-200 dark:border-zinc-700 rounded-xl overflow-hidden hover:bg-slate-50 dark:hover:bg-zinc-800/50 hover:border-teal-500/50 transition-all duration-300 hover:scale-[1.02] shadow-sm hover:shadow-md">
       {/* Screenshot Container - Square */}
       <div className="relative aspect-square bg-slate-100 dark:bg-zinc-900/50 overflow-hidden">
         {project.screenshot ? (
@@ -57,7 +57,7 @@ export default function ProjectCard({ project }: Readonly<{ project: Project }>)
         
         {/* Featured Badge */}
         {project.featured && (
-          <div className="absolute top-3 left-3">
+          <div className="absolute top-3 left-3 z-10">
             <span className="bg-teal-600 text-white text-xs px-2 py-1 rounded-full font-medium">
               Featured
             </span>
@@ -65,7 +65,7 @@ export default function ProjectCard({ project }: Readonly<{ project: Project }>)
         )}
 
         {/* Status Badge */}
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-3 right-3 z-10">
           <span className={`text-xs px-2 py-1 rounded-full border font-medium ${getStatusColor(project.status)}`}>
             {getStatusLabel(project.status)}
           </span>

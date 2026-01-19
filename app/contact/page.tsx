@@ -52,19 +52,7 @@ export default function ContactPage() {
                     </p>
                 </div>
 
-                {/* Contact Methods */}
-                <div className="space-y-6">
-                    <div className="flex items-center space-x-4">
-                        <div className="flex-shrink-0 w-12 h-12 bg-teal-100 dark:bg-teal-900/20 rounded-lg flex items-center justify-center">
-                            <MdEmail className="w-6 h-6 text-teal-600 dark:text-teal-400" />
-                        </div>
-                        <div>
-                            <h3 className="font-medium text-slate-900 dark:text-white">Email</h3>
-                            <p className="text-slate-600 dark:text-gray-300">santosh.rai@example.com</p>
-                        </div>
-                    </div>
-                </div>
-
+            
                 {/* Social Links */}
                 <div>
                     <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-4">

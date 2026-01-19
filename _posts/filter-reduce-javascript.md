@@ -5,8 +5,6 @@ date: '2024-01-01'
 author: 'Santosh Rai'
 ---
 
-# Understanding Filter and Reduce in JavaScript
-
 We already know that we use different types of data structures in our application. One of them is JavaScript Arrays. Today I am going to demonstrate some basic methods used in Array and why it is used.
 
 ## Filter
