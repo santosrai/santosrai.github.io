@@ -14,7 +14,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a personal portfolio website built with Next.js 15, TypeScript, and Tailwind CSS, configured for static export to GitHub Pages.
 
 ### Content Management
-The site has migrated from WordPress to local MDX files:
 - Blog posts are stored as Markdown files in `_posts/` directory
 - Posts contain frontmatter (title, date, excerpt, author) and markdown content
 - The `lib/mdx.ts` module handles reading, parsing with gray-matter, and converting to HTML with marked

@@ -30,7 +30,7 @@ export default async function Home() {
       <section className="bg-slate-100 dark:bg-zinc-800/50 rounded-xl p-6 md:p-8 space-y-4 border border-slate-200 dark:border-transparent transition-colors duration-200">
         <h2 className="text-xl md:text-2xl text-slate-900 dark:text-white font-semibold">About Me</h2>
         <p className="text-slate-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
-          I&apos;m a Full Stack Engineer and RPA Engineer passionate about creating efficient solutions and beautiful user experiences. 
+          I&apos;m a CS @ UC Berkeley student and Full Stack Engineer and RPA Engineer passionate about creating efficient solutions and beautiful user experiences. 
           When I&apos;m not coding, you&apos;ll find me tending to my indoor garden or exploring new technologies.
         </p>
         <div className="flex flex-wrap gap-2">

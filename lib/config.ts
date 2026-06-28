@@ -4,7 +4,7 @@ const config = {
     siteUrl: 'https://santosrai.github.io',
     siteLogo: '/me-photo.webp',
     profileLogo: '/me-photo.webp',
-    intro: 'Software Engineer | Full-Stack • RPA • AI',
+    intro: 'CS @ UC Berkeley | Software Engineer',
     socialLinks: {
       twitter: 'https://twitter.com/santoshrai',
       github: 'https://github.com/santosrai',

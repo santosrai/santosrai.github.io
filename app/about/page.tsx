@@ -9,7 +9,7 @@ export default function About() {
                     About Me
                 </h1>
                 <p className="text-xl text-slate-600 dark:text-gray-300">
-                    Software Engineer | Full-Stack • RPA • AI
+                    CS @ UC Berkeley | Software Engineer | Full-Stack • RPA • AI
                 </p>
             </div>
 
@@ -28,7 +28,7 @@ export default function About() {
                             Welcome to My Digital Garden
                         </h2>
                         <p className="text-slate-600 dark:text-gray-300 text-lg leading-relaxed mb-4">
-                            I&apos;m a passionate Full Stack Engineer and RPA Engineer who believes in creating elegant, 
+                            I&apos;m a CS @ UC Berkeley student and passionate Full Stack Engineer and RPA Engineer who believes in creating elegant, 
                             efficient solutions to complex problems. When I&apos;m not coding, you&apos;ll find me tending to 
                             my indoor garden, where I find the same patience and care that goes into writing clean, 
                             maintainable code.
