@@ -5,10 +5,19 @@ import Image from 'next/image'
 import config from "@/lib/config";
 import ThemeToggle from "./ThemeToggle";
 
+type MenuItem = {
+  node: {
+    databaseId: number;
+    uri: string;
+    label: string;
+    isStatic?: boolean;
+  };
+};
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menu = {
+  const menu: { menuItems: { edges: MenuItem[] } } = {
     menuItems: {
       edges: [
         {
@@ -46,6 +55,14 @@ export default function Header() {
             label: "Contact",
           }
         },
+        {
+          node: {
+            databaseId: 6,
+            uri: "/animator/index.html",
+            label: "Animator",
+            isStatic: true,
+          },
+        }
 
       ],
     }
@@ -90,15 +107,26 @@ export default function Header() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-2">
           <nav className="flex items-center gap-1 lg:gap-2">
-            {!!menu && menu.menuItems.edges.map((item) => (
-              <Link
-                key={item.node.databaseId}
-                href={item.node.uri}
-                className="px-3 py-2 rounded-lg text-slate-900 dark:text-white bg-slate-100 dark:bg-transparent border border-slate-300 dark:border-zinc-600 hover:bg-teal-600 hover:border-teal-500 hover:text-white hover:scale-105 transition-all duration-200 font-medium text-sm"
-              >
-                {item.node.label}
-              </Link>
-            ))}
+            {!!menu && menu.menuItems.edges.map((item) => {
+              const linkClassName = "px-3 py-2 rounded-lg text-slate-900 dark:text-white bg-slate-100 dark:bg-transparent border border-slate-300 dark:border-zinc-600 hover:bg-teal-600 hover:border-teal-500 hover:text-white hover:scale-105 transition-all duration-200 font-medium text-sm";
+              return item.node.isStatic ? (
+                <a
+                  key={item.node.databaseId}
+                  href={item.node.uri}
+                  className={linkClassName}
+                >
+                  {item.node.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.node.databaseId}
+                  href={item.node.uri}
+                  className={linkClassName}
+                >
+                  {item.node.label}
+                </Link>
+              );
+            })}
           </nav>
           <ThemeToggle />
         </div>
@@ -108,16 +136,28 @@ export default function Header() {
       {isMenuOpen && (
         <nav className="md:hidden bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm border-t border-slate-200 dark:border-zinc-700">
           <div className="p-6 space-y-2">
-            {!!menu && menu.menuItems.edges.map((item) => (
-              <Link
-                key={item.node.databaseId}
-                href={item.node.uri}
-                className="block py-3 px-4 text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-300 hover:bg-slate-100 dark:hover:bg-zinc-700/50 rounded-lg transition-all duration-200 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.node.label}
-              </Link>
-            ))}
+            {!!menu && menu.menuItems.edges.map((item) => {
+              const mobileLinkClassName = "block py-3 px-4 text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-300 hover:bg-slate-100 dark:hover:bg-zinc-700/50 rounded-lg transition-all duration-200 font-medium";
+              return item.node.isStatic ? (
+                <a
+                  key={item.node.databaseId}
+                  href={item.node.uri}
+                  className={mobileLinkClassName}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.node.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.node.databaseId}
+                  href={item.node.uri}
+                  className={mobileLinkClassName}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.node.label}
+                </Link>
+              );
+            })}
             <div className="pt-4 border-t border-slate-200 dark:border-zinc-700 mt-4">
               <div className="flex items-center justify-between">
                 <span className="text-slate-900 dark:text-white text-sm font-medium">Theme</span>
