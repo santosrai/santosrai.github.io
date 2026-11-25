@@ -6,7 +6,7 @@ technologies: ["Python", "Flask", "UiPath", "PostgreSQL", "Chart.js", "Bootstrap
 status: "completed"
 featured: false
 date: "2023-08-10"
-screenshot: "/projects/automation-dashboard.png"
+screenshot: "/projects/automation-dashboard.webp"
 ---
 
 # RPA Automation Dashboard

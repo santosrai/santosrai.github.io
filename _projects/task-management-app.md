@@ -7,7 +7,7 @@ technologies: ["React", "Node.js", "PostgreSQL", "Socket.io", "Express", "JWT"]
 status: "completed"
 featured: true
 date: "2023-11-20"
-screenshot: "/projects/task-management-app.png"
+screenshot: "/projects/task-management-app.webp"
 ---
 
 # Task Management Application

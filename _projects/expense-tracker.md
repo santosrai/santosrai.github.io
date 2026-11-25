@@ -7,7 +7,7 @@ technologies: ["React Native", "Firebase", "Chart.js", "AsyncStorage"]
 status: "in-progress"
 featured: false
 date: "2024-01-05"
-screenshot: "/projects/expense-tracker.png"
+screenshot: "/projects/expense-tracker.webp"
 ---
 
 # Personal Expense Tracker

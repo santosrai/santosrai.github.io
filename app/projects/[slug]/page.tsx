@@ -1,4 +1,5 @@
 import { getProjectBySlug, getAllProjects } from "@/lib/mdx"
+import type { Project } from "@/lib/types"
 import { notFound } from "next/navigation"
 import { Metadata } from "next/types"
 import config from "@/lib/config"
@@ -41,7 +42,7 @@ export async function generateMetadata({
         {
           url: project.screenshot,
           width: 1200,
-          height: 630,
+          height: 675,
           alt: project.title,
         }
       ] : [],
@@ -49,7 +50,7 @@ export async function generateMetadata({
   }
 }
 
-function getStatusColor(status: string) {
+function getStatusColor(status: Project['status']) {
   switch (status) {
     case 'completed':
       return 'bg-green-100 dark:bg-green-600/20 text-green-800 dark:text-green-300 border-green-300 dark:border-green-500/30'
@@ -57,12 +58,14 @@ function getStatusColor(status: string) {
       return 'bg-yellow-100 dark:bg-yellow-600/20 text-yellow-800 dark:text-yellow-300 border-yellow-300 dark:border-yellow-500/30'
     case 'archived':
       return 'bg-gray-100 dark:bg-gray-600/20 text-gray-800 dark:text-gray-300 border-gray-300 dark:border-gray-500/30'
-    default:
-      return 'bg-blue-100 dark:bg-blue-600/20 text-blue-800 dark:text-blue-300 border-blue-300 dark:border-blue-500/30'
+    default: {
+      const _exhaustive: never = status
+      return _exhaustive
+    }
   }
 }
 
-function getStatusLabel(status: string) {
+function getStatusLabel(status: Project['status']) {
   switch (status) {
     case 'completed':
       return 'Completed'
@@ -70,8 +73,10 @@ function getStatusLabel(status: string) {
       return 'In Progress'
     case 'archived':
       return 'Archived'
-    default:
-      return status
+    default: {
+      const _exhaustive: never = status
+      return _exhaustive
+    }
   }
 }
 

@@ -7,7 +7,7 @@ technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "React"]
 status: "completed"
 featured: true
 date: "2024-01-15"
-screenshot: "/projects/portfolio-website.png"
+screenshot: "/projects/portfolio-website.webp"
 ---
 
 # Personal Portfolio Website

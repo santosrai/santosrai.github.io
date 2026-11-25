@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import { Project } from '@/lib/types'
 import ProjectCard from '@/components/ProjectCard'
 
@@ -9,11 +9,10 @@ interface ProjectsGridProps {
 }
 
 export default function ProjectsGrid({ projects, allTechnologies }: ProjectsGridProps) {
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects)
   const [selectedFilter, setSelectedFilter] = useState<string>('all')
   const [selectedTech, setSelectedTech] = useState<string>('all')
 
-  useEffect(() => {
+  const filteredProjects = useMemo(() => {
     let filtered = [...projects]
 
     // Filter by status
@@ -25,14 +24,14 @@ export default function ProjectsGrid({ projects, allTechnologies }: ProjectsGrid
 
     // Filter by technology
     if (selectedTech !== 'all') {
-      filtered = filtered.filter(project => 
-        project.technologies.some(tech => 
+      filtered = filtered.filter(project =>
+        project.technologies.some(tech =>
           tech.toLowerCase().includes(selectedTech.toLowerCase())
         )
       )
     }
 
-    setFilteredProjects(filtered)
+    return filtered
   }, [projects, selectedFilter, selectedTech])
 
   return (
@@ -136,7 +135,7 @@ export default function ProjectsGrid({ projects, allTechnologies }: ProjectsGrid
       {/* Projects Grid */}
       <section className="space-y-6">
         {filteredProjects.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
             {filteredProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
